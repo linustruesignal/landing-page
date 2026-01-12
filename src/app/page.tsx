@@ -1,10 +1,13 @@
-import { Hero } from "@/components/sections";
+import { Hero, Problem, HowItWorks, ServicesOverview } from "@/components/sections";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      {/* More sections coming in Phase 1D & 1E */}
+      <Problem />
+      <HowItWorks />
+      <ServicesOverview />
+      {/* Testimonials, Industries, FAQ, and CTA coming in Phase 1E */}
     </>
   );
 }
