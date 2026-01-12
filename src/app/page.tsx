@@ -1,4 +1,13 @@
-import { Hero, Problem, HowItWorks, ServicesOverview } from "@/components/sections";
+import {
+  Hero,
+  Problem,
+  HowItWorks,
+  ServicesOverview,
+  Testimonials,
+  Industries,
+  FAQ,
+  CTA,
+} from "@/components/sections";
 
 export default function Home() {
   return (
@@ -7,7 +16,10 @@ export default function Home() {
       <Problem />
       <HowItWorks />
       <ServicesOverview />
-      {/* Testimonials, Industries, FAQ, and CTA coming in Phase 1E */}
+      <Testimonials />
+      <Industries />
+      <FAQ />
+      <CTA />
     </>
   );
 }
