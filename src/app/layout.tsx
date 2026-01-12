@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Header, Footer } from "@/components/layout";
+import {
+  LocalBusinessStructuredData,
+  OrganizationStructuredData,
+} from "@/components/seo";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -59,6 +63,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <LocalBusinessStructuredData />
+        <OrganizationStructuredData />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans`}>
         <Header />
         <main className="min-h-screen">{children}</main>
