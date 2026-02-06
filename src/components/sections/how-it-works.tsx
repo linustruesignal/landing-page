@@ -1,86 +1,96 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Plug, Target, TrendingUp } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 
 const steps = [
   {
     step: "01",
-    name: "Connect",
+    title: "Tell us about your business",
     description:
-      "We set up your AI phone system in less than 24 hours. No technical skills required—we handle everything.",
-    icon: Plug,
-    color: "from-violet-500 to-violet-600",
+      "Forward your line. We set up your AI receptionist with your services, pricing, and calendar. Takes one conversation and 24 hours.",
   },
   {
     step: "02",
-    name: "Capture",
+    title: "AI answers your phone",
     description:
-      "AI answers every call, qualifies leads, and books appointments directly into your calendar. 24/7/365.",
-    icon: Target,
-    color: "from-cta-500 to-cta-600",
+      "Every call picked up in under 1 second. The AI asks the right questions, qualifies the lead, and books the job straight into your calendar.",
   },
   {
     step: "03",
-    name: "Grow",
+    title: "You see more jobs on your schedule",
     description:
-      "You focus on the job while leads flow automatically. Review captured opportunities and watch your business grow.",
-    icon: TrendingUp,
-    color: "from-success-500 to-success-600",
+      "Open your calendar and see new appointments. Check your dashboard for leads captured, revenue earned, and exactly what every call cost you versus what it brought in.",
   },
 ];
 
 export function HowItWorks() {
+  const shouldReduceMotion = useReducedMotion();
+  const fade = shouldReduceMotion
+    ? {}
+    : {
+        initial: { opacity: 0, y: 20 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true },
+      };
+
   return (
-    <section id="how-it-works" className="bg-navy-50 py-20 sm:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mx-auto max-w-2xl text-center"
-        >
-          <h2 className="text-3xl font-bold tracking-tight text-navy-900 sm:text-4xl">
-            How It Works
-          </h2>
-          <p className="mt-4 text-lg text-navy-600">
-            Get up and running in three simple steps. No complicated setup, no lengthy
-            onboarding—just results.
+    <section
+      id="how-it-works"
+      className="relative scroll-mt-20 overflow-hidden bg-ink-900 py-24 sm:py-32"
+    >
+      {/* Oversized watermark */}
+      <div className="swiss-watermark" aria-hidden="true">
+        <span className="swiss-watermark-text text-[12rem] !text-white sm:text-[18rem] lg:text-[22rem] !opacity-[0.02]">
+          HOW
+        </span>
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Section header */}
+        <motion.div {...fade} transition={{ duration: 0.5 }}>
+          <p className="text-xs font-medium uppercase tracking-[0.25em] text-white/30">
+            Process
           </p>
+          <h2 className="mt-4 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            Live in 24 hours. Three steps.
+          </h2>
+          {/* Accent divider */}
+          <div
+            className="mt-6 h-[3px] w-16 gradient-brand"
+            aria-hidden="true"
+          />
         </motion.div>
 
-        <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
+        {/* 3-column grid with gap-px dividers */}
+        <div className="mt-16 grid grid-cols-1 gap-px bg-white/5 sm:mt-20 lg:grid-cols-3">
           {steps.map((step, index) => (
             <motion.div
-              key={step.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              key={step.step}
+              {...fade}
               transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="relative"
+              className="group relative bg-ink-900 p-8 transition-colors duration-300 hover:bg-ink-800 hover-line-accent sm:p-10"
             >
-              {/* Connector Line */}
-              {index < steps.length - 1 && (
-                <div className="absolute left-1/2 top-12 hidden h-0.5 w-full bg-navy-200 lg:block" />
-              )}
+              {/* Oversized step number watermark */}
+              <span
+                className="pointer-events-none absolute right-6 top-6 select-none font-display text-[8rem] font-bold leading-none text-white/[0.04] sm:text-[10rem]"
+                aria-hidden="true"
+              >
+                {step.step}
+              </span>
 
-              <div className="relative flex flex-col items-center text-center">
-                {/* Step Number & Icon */}
-                <div className="relative">
-                  <div
-                    className={`flex h-24 w-24 items-center justify-center rounded-2xl bg-gradient-to-br ${step.color} shadow-lg`}
-                  >
-                    <step.icon className="h-10 w-10 text-white" />
-                  </div>
-                  <span className="absolute -right-2 -top-2 flex h-8 w-8 items-center justify-center rounded-full bg-white text-sm font-bold text-navy-900 shadow-md">
-                    {step.step}
-                  </span>
-                </div>
+              {/* Step label */}
+              <div className="relative">
+                <span className="font-display text-sm font-medium tabular-nums tracking-wider text-white/30">
+                  Step {step.step}
+                </span>
 
-                {/* Content */}
-                <h3 className="mt-6 text-xl font-bold text-navy-900">{step.name}</h3>
-                <p className="mt-3 text-navy-600">{step.description}</p>
+                <h3 className="mt-6 font-display text-xl font-semibold leading-tight text-white sm:text-2xl">
+                  {step.title}
+                </h3>
+
+                <p className="mt-4 leading-relaxed text-white/50">
+                  {step.description}
+                </p>
               </div>
             </motion.div>
           ))}

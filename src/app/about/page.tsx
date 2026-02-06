@@ -2,37 +2,42 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Target, Lightbulb, MapPin, Heart, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SectionDivider } from "@/components/ui/section-divider";
 
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "True Signal Digital brings enterprise-level AI automation to San Antonio's service businesses—without the enterprise complexity or price tag.",
+    "SignalCrew brings enterprise-level AI automation to San Antonio's service businesses — without the enterprise complexity or price tag.",
+  openGraph: {
+    title: "About SignalCrew | AI Automation for Local Businesses",
+    description: "Enterprise-level AI automation for San Antonio's service businesses.",
+  },
 };
 
 const values = [
   {
     icon: Target,
-    title: "Results Over Features",
+    title: "Results over features",
     description:
-      "We measure success by your revenue, not our feature list. Every solution is designed to generate measurable ROI.",
+      "We measure success by your revenue growth, not our feature list. If it doesn't put money in your pocket, we don't build it.",
   },
   {
     icon: Lightbulb,
-    title: "Simplicity",
+    title: "Radical simplicity",
     description:
-      "If it's complicated, we haven't done our job. Our solutions work seamlessly without requiring technical expertise.",
+      "If it's complicated, we haven't done our job. Our tools work without manuals, training sessions, or IT departments.",
   },
   {
     icon: MapPin,
-    title: "Local First",
+    title: "San Antonio first",
     description:
-      "San Antonio businesses deserve San Antonio service. We're here in your community, invested in your success.",
+      "We're not a faceless tech company in Silicon Valley. We're your neighbors, and we're invested in this community.",
   },
   {
     icon: Heart,
-    title: "No BS Pricing",
+    title: "Honest pricing",
     description:
-      "Transparent pricing, no hidden fees, cancel anytime. We earn your business every month with results.",
+      "Transparent pricing. No hidden fees. Month-to-month. We earn your business every month with results, not by trapping you in contracts.",
   },
 ];
 
@@ -40,123 +45,142 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-navy-900 py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-              We Help Local Businesses Compete with AI
+      <section className="relative overflow-hidden bg-warm-50 pt-32 pb-20 sm:pb-28">
+        <div className="swiss-watermark" aria-hidden="true">
+          <span className="swiss-watermark-text text-[12vw]">ABOUT</span>
+        </div>
+
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <SectionDivider className="mb-4" />
+            <h1 className="font-display text-4xl font-bold tracking-tight text-ink-900 sm:text-5xl lg:text-6xl">
+              We build AI that picks up the phone so you don&apos;t have to.
             </h1>
-            <p className="mt-6 text-lg text-navy-300">
-              True Signal Digital brings enterprise-level automation to San Antonio's
-              service businesses—without the enterprise complexity or price tag.
+            <p className="mt-6 max-w-2xl text-lg text-ink-500 leading-relaxed">
+              SignalCrew brings enterprise-level automation to San
+              Antonio&apos;s service businesses — without the enterprise complexity
+              or price tag.
             </p>
           </div>
         </div>
       </section>
 
       {/* Founder Story */}
-      <section className="bg-background py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl">
-            <h2 className="text-3xl font-bold text-navy-900">
-              Why I Started True Signal Digital
+      <section className="relative overflow-hidden bg-white py-20 sm:py-28">
+        <div className="swiss-watermark" aria-hidden="true">
+          <span className="swiss-watermark-text text-[10vw]">STORY</span>
+        </div>
+
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <SectionDivider className="mb-4" />
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-ink-400">
+              Our Origin
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl">
+              Why I started SignalCrew
             </h2>
 
-            <div className="mt-8 space-y-6 text-lg text-navy-600">
+            <div className="mt-10 space-y-6 text-lg text-ink-500 leading-relaxed">
               <p>
-                With a background in computer science, I've spent years building
-                technology solutions for businesses of all sizes. But I noticed something
-                frustrating: the same AI tools helping Fortune 500 companies were
-                completely out of reach for local businesses.
+                I spent years building technology for companies that could afford
+                anything. Meanwhile, I watched friends who run HVAC companies,
+                plumbing shops, and contracting firms lose thousands to missed
+                calls and manual busywork. They didn&apos;t need enterprise
+                software. They needed something simple that just works.
               </p>
 
               <p>
-                Meanwhile, I watched friends who run HVAC companies, plumbing businesses,
-                and contracting firms lose thousands of dollars to missed calls and manual
-                processes. They didn't need complicated enterprise software—they needed
-                simple, affordable AI that just works.
+                That gap is why SignalCrew exists. We take the same AI
+                technology powering Fortune 500 call centers and make it
+                accessible to the businesses that actually form the backbone of
+                San Antonio&apos;s economy.
               </p>
 
               <p>
-                That's why I started True Signal Digital. We take powerful AI technology
-                and make it accessible to the businesses that form the backbone of San
-                Antonio's economy. No technical expertise required. No long-term
-                contracts. Just results.
-              </p>
-
-              <p>
-                Every day, I wake up excited to help another local business owner reclaim
-                their time and stop leaving money on the table. If you're tired of
-                missing calls and drowning in admin work, I'd love to show you what's
-                possible.
+                No technical expertise required. No contracts. Just results you
+                can measure in your bank account.
               </p>
             </div>
 
-            <div className="mt-8 border-l-4 border-violet-500 pl-6">
-              <p className="text-lg font-medium text-navy-900">
-                "Our mission is simple: give every local business the AI superpowers that
-                used to be reserved for big corporations."
+            {/* Blockquote */}
+            <div className="mt-10 rounded-lg border-l-[3px] border-primary-600 pl-6">
+              <p className="font-display text-lg font-semibold text-ink-900 leading-relaxed">
+                &ldquo;Our mission is simple: give every local business the AI
+                superpowers that used to be reserved for corporations with
+                million-dollar budgets.&rdquo;
               </p>
-              <p className="mt-2 text-navy-600">— Founder, True Signal Digital</p>
+              <p className="mt-3 text-sm text-ink-400">
+                — Founder, TrueSignal Digital
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Values */}
-      <section className="bg-navy-50 py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-navy-900">Our Values</h2>
-            <p className="mt-4 text-lg text-navy-600">
-              These principles guide everything we do.
+      <section className="relative overflow-hidden border-y border-ink-300/30 bg-warm-50 py-20 sm:py-28">
+        <div className="swiss-watermark" aria-hidden="true">
+          <span className="swiss-watermark-text text-[10vw]">VALUES</span>
+        </div>
+
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl">
+            <SectionDivider className="mb-4" />
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-ink-400">
+              Principles
             </p>
+            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl">
+              What we stand for
+            </h2>
           </div>
 
-          <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2">
+          <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2">
             {values.map((value) => (
               <div
                 key={value.title}
-                className="rounded-2xl border border-navy-200 bg-white p-8 shadow-sm"
+                className="group rounded-lg border border-ink-300/30 bg-white p-8 transition-colors hover:bg-primary-50/30"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-violet-100">
-                  <value.icon className="h-6 w-6 text-violet-600" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-ink-300/30 bg-warm-50">
+                  <value.icon className="h-5 w-5 text-primary-600" />
                 </div>
-                <h3 className="mt-6 text-xl font-bold text-navy-900">{value.title}</h3>
-                <p className="mt-3 text-navy-600">{value.description}</p>
+                <h3 className="mt-6 font-display text-lg font-semibold text-ink-900">
+                  {value.title}
+                </h3>
+                <p className="mt-3 text-ink-500 leading-relaxed">
+                  {value.description}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* San Antonio */}
-      <section className="bg-background py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl bg-navy-900 p-8 sm:p-12 lg:p-16">
-            <div className="mx-auto max-w-2xl text-center">
-              <div className="inline-flex items-center gap-2 rounded-full bg-navy-800 px-4 py-2 text-sm text-navy-300">
-                <MapPin className="h-4 w-4 text-cta-500" />
-                Proudly Based in San Antonio
-              </div>
-              <h2 className="mt-6 text-3xl font-bold text-white sm:text-4xl">
-                Built for San Antonio, by San Antonio
-              </h2>
-              <p className="mt-6 text-lg text-navy-300">
-                We're not a faceless tech company in Silicon Valley. We're your
-                neighbors—and we understand the unique challenges facing service
-                businesses in our community.
-              </p>
-              <Button
-                asChild
-                className="mt-8 bg-cta-500 hover:bg-cta-600 text-white font-semibold px-8"
-              >
-                <Link href="/contact">
-                  Let's Talk
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-            </div>
+      {/* CTA */}
+      <section className="relative overflow-hidden bg-ink-900 py-20 sm:py-28">
+        <div className="swiss-watermark" aria-hidden="true">
+          <span className="swiss-watermark-text text-[12vw] !text-white !opacity-[0.02]">
+            SIGNAL
+          </span>
+        </div>
+
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <SectionDivider className="mx-auto mb-4" />
+            <h2 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Built for San Antonio, by San Antonio
+            </h2>
+            <p className="mt-6 text-lg text-white/50 leading-relaxed">
+              We&apos;re not a faceless tech company halfway across the country.
+              We&apos;re your neighbors — and we understand the unique challenges
+              facing service businesses in our community.
+            </p>
+            <Button asChild variant="brand" className="mt-8">
+              <Link href="/contact">
+                Let&apos;s Talk
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>

@@ -1,88 +1,108 @@
 "use client";
 
-import { motion } from "framer-motion";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { Plus, Minus } from "lucide-react";
+import { SectionDivider } from "@/components/ui/section-divider";
 
 const faqs = [
   {
     question: "How quickly can I get started?",
     answer:
-      "Most businesses are up and running within 24 hours. We handle all the setup—you just need to answer a few questions about your business and how you'd like calls handled.",
+      "Most businesses are answering calls with AI within 24 hours. You give us a 15-minute conversation about your services and pricing. We do the rest. No technical work on your end.",
   },
   {
-    question: "Will callers know they're talking to AI?",
+    question: "Will callers know they\u2019re talking to AI?",
     answer:
-      "Our AI is trained to sound natural and professional. Most callers can't tell the difference—and they get faster service. The AI introduces itself honestly if asked directly, but focuses on helping the customer efficiently.",
+      "They almost never do. The AI speaks naturally, uses your business name, and knows your services. Callers think they reached a friendly, knowledgeable receptionist. If someone does ask, the AI is honest about it.",
   },
   {
-    question: "What if the AI can't answer a question?",
+    question: "What if the AI can\u2019t handle a call?",
     answer:
-      "The AI seamlessly transfers complex calls to you or your team, with full context of the conversation. You'll receive a summary of what was discussed before you even say hello.",
+      "It transfers the call to you or your team with full context \u2014 who called, what they need, and what was already discussed. You pick up mid-conversation, not starting from scratch.",
   },
   {
-    question: "Do I need technical skills to use this?",
+    question: "Am I locked into a contract?",
     answer:
-      "Not at all. We handle everything—setup, training, and ongoing optimization. You just review leads and booked appointments in a simple dashboard, or receive notifications via text and email.",
+      "No. Month-to-month. If it stops making you money, cancel with a click. We keep clients by earning revenue for them, not by trapping them in paperwork.",
   },
   {
-    question: "Is there a long-term contract?",
+    question: "How do I know if it\u2019s actually making me money?",
     answer:
-      "No. All our plans are month-to-month, cancel anytime. We earn your business every month with results, not lock-in contracts.",
-  },
-  {
-    question: "What's the ROI?",
-    answer:
-      "Most clients see positive ROI within the first week. Consider this: one captured emergency call (averaging $1,200+ for service businesses) typically pays for several months of service. Most clients capture multiple calls per week they would have otherwise missed.",
+      "Your dashboard shows every call, every lead, and every booked job. Most clients see the math clearly within the first week. One emergency plumbing call ($1,200+) covers several months of service.",
   },
 ];
 
-export function FAQ() {
+function FAQItem({
+  question,
+  answer,
+}: {
+  question: string;
+  answer: string;
+}) {
+  const [open, setOpen] = useState(false);
+
   return (
-    <section className="bg-navy-50 py-20 sm:py-28">
+    <button
+      onClick={() => setOpen(!open)}
+      className="w-full border-b border-ink-300/30 py-6 text-left transition-colors hover:bg-primary-50/30 rounded-md px-2"
+      aria-expanded={open}
+    >
+      <div className="flex items-center justify-between gap-8">
+        <h3 className="font-display text-base font-semibold text-ink-900">
+          {question}
+        </h3>
+        {open ? (
+          <Minus
+            className="h-5 w-5 shrink-0 text-primary-600"
+            aria-hidden="true"
+          />
+        ) : (
+          <Plus
+            className="h-5 w-5 shrink-0 text-ink-300"
+            aria-hidden="true"
+          />
+        )}
+      </div>
+      {open && (
+        <p className="mt-4 max-w-xl text-ink-500 leading-relaxed">
+          {answer}
+        </p>
+      )}
+    </button>
+  );
+}
+
+export function FAQ() {
+  const shouldReduceMotion = useReducedMotion();
+  const fade = shouldReduceMotion
+    ? {}
+    : {
+        initial: { opacity: 0, y: 12 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true },
+      };
+
+  return (
+    <section className="border-t border-ink-300/50 bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center"
-        >
-          <h2 className="text-3xl font-bold tracking-tight text-navy-900 sm:text-4xl">
-            Frequently Asked Questions
+        {/* Section header */}
+        <motion.div {...fade} transition={{ duration: 0.6 }}>
+          <SectionDivider className="mb-4" />
+          <h2 className="font-display text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl">
+            Questions we hear on every call.
           </h2>
-          <p className="mt-4 text-lg text-navy-600">
-            Everything you need to know about getting started.
-          </p>
         </motion.div>
 
+        {/* FAQ accordion */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...fade}
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mt-12"
         >
-          <Accordion type="single" collapsible className="space-y-4">
-            {faqs.map((faq, index) => (
-              <AccordionItem
-                key={index}
-                value={`item-${index}`}
-                className="rounded-lg border border-navy-200 bg-white px-6 shadow-sm"
-              >
-                <AccordionTrigger className="text-left font-semibold text-navy-900 hover:text-violet-600 hover:no-underline">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-navy-600">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+          {faqs.map((faq, i) => (
+            <FAQItem key={i} question={faq.question} answer={faq.answer} />
+          ))}
         </motion.div>
       </div>
     </section>

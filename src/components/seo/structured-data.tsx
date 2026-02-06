@@ -2,12 +2,13 @@ export function LocalBusinessStructuredData() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "True Signal Digital",
+    name: "SignalCrew",
+    alternateName: "TrueSignal Digital LLC",
     description:
       "AI-powered phone answering, chatbots, review management, and business automation for San Antonio service businesses.",
-    url: "https://truesignaldigital.com",
+    url: "https://signalcrew.ai",
     telephone: "+1-210-555-1234",
-    email: "hello@truesignaldigital.com",
+    email: "hello@signalcrew.ai",
     address: {
       "@type": "PostalAddress",
       addressLocality: "San Antonio",
@@ -88,9 +89,10 @@ export function OrganizationStructuredData() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "True Signal Digital",
-    url: "https://truesignaldigital.com",
-    logo: "https://truesignaldigital.com/logo.png",
+    name: "SignalCrew",
+    legalName: "TrueSignal Digital LLC",
+    url: "https://signalcrew.ai",
+    logo: "https://signalcrew.ai/icon.svg",
     description:
       "AI automation agency helping San Antonio service businesses capture more leads and save time.",
     contactPoint: {
@@ -114,11 +116,11 @@ export function WebsiteStructuredData() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "True Signal Digital",
-    url: "https://truesignaldigital.com",
+    name: "SignalCrew",
+    url: "https://signalcrew.ai",
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://truesignaldigital.com/search?q={search_term_string}",
+      target: "https://signalcrew.ai/search?q={search_term_string}",
       "query-input": "required name=search_term_string",
     },
   };

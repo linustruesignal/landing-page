@@ -3,6 +3,7 @@ import {
   Problem,
   HowItWorks,
   ServicesOverview,
+  TrustBadges,
   Testimonials,
   Industries,
   FAQ,
@@ -16,6 +17,7 @@ export default function Home() {
       <Problem />
       <HowItWorks />
       <ServicesOverview />
+      <TrustBadges />
       <Testimonials />
       <Industries />
       <FAQ />
