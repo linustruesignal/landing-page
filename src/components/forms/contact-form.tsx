@@ -47,12 +47,11 @@ export function ContactForm() {
 
   if (isSubmitted) {
     return (
-      <div className="rounded-2xl border border-success-200 bg-success-50 p-8 text-center">
-        <CheckCircle className="mx-auto h-12 w-12 text-success-600" />
-        <h3 className="mt-4 text-xl font-semibold text-navy-900">Message Sent!</h3>
-        <p className="mt-2 text-navy-600">
-          Thanks for reaching out. We'll get back to you within 2 hours during business
-          hours.
+      <div className="rounded-lg border border-accent-200 bg-accent-50 p-8 text-center">
+        <CheckCircle className="mx-auto h-12 w-12 text-accent-500" />
+        <h3 className="mt-4 font-display text-xl font-semibold text-ink-900">Message sent.</h3>
+        <p className="mt-2 text-ink-500">
+          We&apos;ll get back to you within 2 hours during business hours.
         </p>
       </div>
     );
@@ -61,8 +60,8 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-navy-700">
-          Name <span className="text-red-500">*</span>
+        <label htmlFor="name" className="block text-sm font-medium text-ink-700">
+          Name <span className="text-primary-600">*</span>
         </label>
         <Input
           id="name"
@@ -70,14 +69,14 @@ export function ContactForm() {
           required
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className="mt-1"
+          className="mt-1 border-ink-300 bg-warm-50 focus:border-primary-500 focus:ring-primary-500"
           placeholder="Your name"
         />
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-navy-700">
-          Email <span className="text-red-500">*</span>
+        <label htmlFor="email" className="block text-sm font-medium text-ink-700">
+          Email <span className="text-primary-600">*</span>
         </label>
         <Input
           id="email"
@@ -85,34 +84,34 @@ export function ContactForm() {
           required
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          className="mt-1"
+          className="mt-1 border-ink-300 bg-warm-50 focus:border-primary-500 focus:ring-primary-500"
           placeholder="you@company.com"
         />
       </div>
 
       <div>
-        <label htmlFor="phone" className="block text-sm font-medium text-navy-700">
-          Phone <span className="text-navy-400">(optional)</span>
+        <label htmlFor="phone" className="block text-sm font-medium text-ink-700">
+          Phone <span className="text-ink-400">(optional)</span>
         </label>
         <Input
           id="phone"
           type="tel"
           value={formData.phone}
           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-          className="mt-1"
+          className="mt-1 border-ink-300 bg-warm-50 focus:border-primary-500 focus:ring-primary-500"
           placeholder="(210) 555-1234"
         />
       </div>
 
       <div>
-        <label htmlFor="businessType" className="block text-sm font-medium text-navy-700">
+        <label htmlFor="businessType" className="block text-sm font-medium text-ink-700">
           Business Type
         </label>
         <Select
           value={formData.businessType}
           onValueChange={(value) => setFormData({ ...formData, businessType: value })}
         >
-          <SelectTrigger className="mt-1">
+          <SelectTrigger className="mt-1 border-ink-300 bg-warm-50">
             <SelectValue placeholder="Select your industry" />
           </SelectTrigger>
           <SelectContent>
@@ -126,23 +125,24 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-navy-700">
-          Message
+        <label htmlFor="message" className="block text-sm font-medium text-ink-700">
+          What&apos;s your biggest challenge right now?
         </label>
         <Textarea
           id="message"
           rows={4}
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-          className="mt-1"
-          placeholder="Tell us about your biggest challenge with customer calls..."
+          className="mt-1 border-ink-300 bg-warm-50 focus:border-primary-500 focus:ring-primary-500"
+          placeholder="Missing calls? Drowning in admin? Tell us what keeps you up at night..."
         />
       </div>
 
       <Button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-cta-500 hover:bg-cta-600 text-white font-semibold py-6"
+        variant="brand"
+        className="w-full py-6 font-display text-sm"
       >
         {isSubmitting ? (
           <>

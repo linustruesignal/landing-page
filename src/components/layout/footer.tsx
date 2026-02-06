@@ -1,118 +1,96 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
-
-const services = [
-  { name: "AI Phone Answering", href: "/services/ai-phone-answering" },
-  { name: "AI Chatbots", href: "/services/ai-chatbots" },
-  { name: "Review Management", href: "/services/review-management" },
-  { name: "Business Automation", href: "/services/business-automation" },
-];
-
-const company = [
-  { name: "About", href: "/about" },
-  { name: "Pricing", href: "/pricing" },
-  { name: "Contact", href: "/contact" },
-  { name: "Privacy Policy", href: "/privacy" },
-  { name: "Terms of Service", href: "/terms" },
-];
+import { SignalCrewWordmark } from "@/components/brand/signal-crew-logo";
+import { services, companyLinks } from "@/lib/constants";
 
 export function Footer() {
   return (
-    <footer className="bg-navy-900 text-white">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Brand Column */}
-          <div className="space-y-4">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-violet-500 to-violet-600">
-                <span className="text-lg font-bold text-white">T</span>
-              </div>
-              <span className="text-xl font-bold">
-                True Signal <span className="text-violet-400">Digital</span>
-              </span>
+    <footer className="border-t border-white/5 bg-ink-900 text-white">
+      {/* Brand accent line */}
+      <div className="h-[3px] w-full gradient-brand" aria-hidden="true" />
+
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-4">
+          {/* Brand */}
+          <div>
+            <Link href="/" className="group inline-block">
+              <SignalCrewWordmark className="transition-transform duration-300 group-hover:scale-105 [&_span]:!text-white [&_.text-primary-600]:!text-primary-400 [&_.text-accent-500]:!text-accent-400" />
             </Link>
-            <p className="text-sm text-navy-300">
-              AI automation for San Antonio service businesses. Never miss another lead—day
-              or night.
+            <p className="mt-4 text-sm text-white/40 leading-relaxed">
+              Your AI crew. Every call answered. Serving local service businesses from San Antonio, TX.
+            </p>
+            <p className="mt-3 text-xs text-white/20">
+              SignalCrew is a TrueSignal Digital product.
             </p>
           </div>
 
-          {/* Services Column */}
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-navy-400">
+          {/* Services */}
+          <nav aria-label="Services">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary-400/60">
               Services
-            </h3>
-            <ul className="mt-4 space-y-3">
+            </p>
+            <ul className="mt-4 space-y-2">
               {services.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-sm text-navy-300 hover:text-white transition-colors"
+                    className="text-sm text-white/40 transition-colors hover:text-white"
                   >
                     {item.name}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Company Column */}
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-navy-400">
+          {/* Company */}
+          <nav aria-label="Company">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary-400/60">
               Company
-            </h3>
-            <ul className="mt-4 space-y-3">
-              {company.map((item) => (
+            </p>
+            <ul className="mt-4 space-y-2">
+              {companyLinks.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-sm text-navy-300 hover:text-white transition-colors"
+                    className="text-sm text-white/40 transition-colors hover:text-white"
                   >
                     {item.name}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Contact Column */}
+          {/* Contact */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-navy-400">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary-400/60">
               Contact
-            </h3>
-            <ul className="mt-4 space-y-3">
+            </p>
+            <ul className="mt-4 space-y-2 text-sm text-white/40">
               <li>
-                <a
-                  href="tel:+12105551234"
-                  className="flex items-center gap-2 text-sm text-navy-300 hover:text-white transition-colors"
-                >
-                  <Phone className="h-4 w-4" />
+                <a href="mailto:hello@signalcrew.ai" className="flex items-center gap-2 hover:text-white transition-colors">
+                  <Mail className="h-3 w-3" aria-hidden="true" />
+                  hello@signalcrew.ai
+                </a>
+              </li>
+              <li>
+                <a href="tel:+12105551234" className="flex items-center gap-2 hover:text-white transition-colors">
+                  <Phone className="h-3 w-3" aria-hidden="true" />
                   (210) 555-1234
                 </a>
               </li>
-              <li>
-                <a
-                  href="mailto:hello@truesignaldigital.com"
-                  className="flex items-center gap-2 text-sm text-navy-300 hover:text-white transition-colors"
-                >
-                  <Mail className="h-4 w-4" />
-                  hello@truesignaldigital.com
-                </a>
-              </li>
-              <li>
-                <div className="flex items-center gap-2 text-sm text-navy-300">
-                  <MapPin className="h-4 w-4" />
-                  San Antonio, TX
-                </div>
+              <li className="flex items-center gap-2">
+                <MapPin className="h-3 w-3" aria-hidden="true" />
+                San Antonio, TX
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-12 border-t border-navy-800 pt-8">
-          <p className="text-center text-sm text-navy-400">
-            © {new Date().getFullYear()} True Signal Digital. All rights reserved.
+        <div className="mt-12 border-t border-white/5 pt-8">
+          <p className="text-xs text-white/20">
+            &copy; {new Date().getFullYear()} TrueSignal Digital LLC. All rights reserved.
           </p>
         </div>
       </div>

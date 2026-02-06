@@ -1,124 +1,137 @@
 import { Metadata } from "next";
 import { ContactForm } from "@/components/forms";
 import { Phone, Mail, Clock, Calendar } from "lucide-react";
+import { SectionDivider } from "@/components/ui/section-divider";
 
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Get in touch with True Signal Digital. Book a free demo or ask us anything about AI phone answering and business automation.",
+    "Get in touch with SignalCrew. Book a free 15-minute call or drop us a line — no pressure, no pitch.",
+  openGraph: {
+    title: "Contact SignalCrew | AI Automation for Local Businesses",
+    description: "Book a free 15-minute call or drop us a line — no pressure, no pitch.",
+  },
 };
 
 export default function ContactPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-navy-900 py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-              Let's Talk About Your Business
+      <section className="relative overflow-hidden bg-warm-50 pt-32 pb-20 sm:pb-28">
+        <div className="swiss-watermark" aria-hidden="true">
+          <span className="swiss-watermark-text text-[12vw]">CONTACT</span>
+        </div>
+
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <SectionDivider className="mb-4" />
+            <h1 className="font-display text-4xl font-bold tracking-tight text-ink-900 sm:text-5xl lg:text-6xl">
+              Let&apos;s figure out how much revenue you&apos;re leaving on the
+              table.
             </h1>
-            <p className="mt-6 text-lg text-navy-300">
-              Book a free 15-minute call or reach out directly. No pressure, no sales
-              pitch—just answers.
+            <p className="mt-6 max-w-2xl text-lg text-ink-500 leading-relaxed">
+              Book a free 15-minute call or drop us a line. No pressure, no
+              pitch — just a conversation about your business.
             </p>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section className="bg-background py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-white py-20 sm:py-28">
+        <div className="swiss-watermark" aria-hidden="true">
+          <span className="swiss-watermark-text text-[10vw]">HELLO</span>
+        </div>
+
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
-            {/* Contact Form */}
-            <div className="rounded-2xl border border-navy-200 bg-white p-8 shadow-sm">
-              <h2 className="text-2xl font-bold text-navy-900">Send Us a Message</h2>
-              <p className="mt-2 text-navy-600">
-                Fill out the form below and we'll get back to you shortly.
+            {/* Left: Contact Form */}
+            <div className="rounded-lg border border-ink-300/50 bg-white p-8 sm:p-10">
+              <SectionDivider className="mb-4" />
+              <h2 className="font-display text-2xl font-bold text-ink-900">
+                Send us a message
+              </h2>
+              <p className="mt-2 text-ink-500 leading-relaxed">
+                Tell us what&apos;s keeping you up at night. We&apos;ll get back
+                to you within 2 hours.
               </p>
               <div className="mt-8">
                 <ContactForm />
               </div>
             </div>
 
-            {/* Contact Info */}
-            <div className="space-y-8">
+            {/* Right: Info Cards */}
+            <div className="space-y-6">
               {/* Book a Call */}
-              <div className="rounded-2xl border border-navy-200 bg-white p-8 shadow-sm">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-violet-100">
-                    <Calendar className="h-6 w-6 text-violet-600" />
+              <div className="rounded-lg border border-ink-300/50 bg-white p-8">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-ink-300/30 bg-primary-50">
+                    <Calendar className="h-5 w-5 text-primary-600" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-navy-900">Book a Call</h3>
-                    <p className="text-sm text-navy-600">
-                      Schedule a free 15-minute demo
+                    <h3 className="font-display text-lg font-semibold text-ink-900">
+                      Book a call
+                    </h3>
+                    <p className="mt-2 text-ink-500 leading-relaxed">
+                      Fill out the form and we&apos;ll send you a scheduling
+                      link. Typical response: under 2 hours.
                     </p>
-                  </div>
-                </div>
-                <div className="mt-6">
-                  {/* Calendly Placeholder */}
-                  <div className="rounded-lg border-2 border-dashed border-navy-200 bg-navy-50 p-8 text-center">
-                    <p className="text-sm text-navy-500">
-                      Calendly widget will be embedded here
-                    </p>
-                    <a
-                      href={process.env.NEXT_PUBLIC_CALENDLY_URL || "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-4 inline-block rounded-lg bg-cta-500 px-6 py-3 font-semibold text-white hover:bg-cta-600 transition-colors"
-                    >
-                      Open Calendar
-                    </a>
                   </div>
                 </div>
               </div>
 
               {/* Direct Contact */}
-              <div className="rounded-2xl border border-navy-200 bg-white p-8 shadow-sm">
-                <h3 className="text-lg font-semibold text-navy-900">Direct Contact</h3>
-                <ul className="mt-6 space-y-4">
+              <div className="rounded-lg border border-ink-300/50 bg-white p-8">
+                <h3 className="font-display text-lg font-semibold text-ink-900">
+                  Direct contact
+                </h3>
+                <ul className="mt-6 space-y-5">
                   <li>
                     <a
                       href="tel:+12105551234"
-                      className="flex items-center gap-4 text-navy-700 hover:text-violet-600 transition-colors"
+                      className="group flex items-center gap-4 text-ink-500 transition-colors hover:text-primary-600"
                     >
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy-100">
-                        <Phone className="h-5 w-5" />
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-ink-300/30 bg-warm-50 transition-colors group-hover:border-primary-300 group-hover:bg-primary-50">
+                        <Phone className="h-4 w-4" />
                       </div>
                       <div>
-                        <p className="font-medium">Call or Text</p>
-                        <p className="text-sm text-navy-500">(210) 555-1234</p>
+                        <p className="font-display text-sm font-semibold text-ink-900">
+                          Call or Text
+                        </p>
+                        <p className="text-sm">(210) 555-1234</p>
                       </div>
                     </a>
                   </li>
                   <li>
                     <a
-                      href="mailto:hello@truesignaldigital.com"
-                      className="flex items-center gap-4 text-navy-700 hover:text-violet-600 transition-colors"
+                      href="mailto:hello@signalcrew.ai"
+                      className="group flex items-center gap-4 text-ink-500 transition-colors hover:text-primary-600"
                     >
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy-100">
-                        <Mail className="h-5 w-5" />
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-ink-300/30 bg-warm-50 transition-colors group-hover:border-primary-300 group-hover:bg-primary-50">
+                        <Mail className="h-4 w-4" />
                       </div>
                       <div>
-                        <p className="font-medium">Email</p>
-                        <p className="text-sm text-navy-500">
-                          hello@truesignaldigital.com
+                        <p className="font-display text-sm font-semibold text-ink-900">
+                          Email
                         </p>
+                        <p className="text-sm">hello@signalcrew.ai</p>
                       </div>
                     </a>
                   </li>
                 </ul>
               </div>
 
-              {/* Response Time */}
-              <div className="rounded-2xl border border-success-200 bg-success-50 p-6">
-                <div className="flex items-center gap-3">
-                  <Clock className="h-5 w-5 text-success-600" />
+              {/* Fast Response */}
+              <div className="rounded-lg border border-accent-200 bg-accent-50 p-6">
+                <div className="flex items-center gap-4">
+                  <Clock className="h-5 w-5 shrink-0 text-accent-500" />
                   <div>
-                    <p className="font-medium text-success-800">Fast Response</p>
-                    <p className="text-sm text-success-700">
-                      We respond to all inquiries within 2 hours during business hours.
+                    <p className="font-display text-sm font-semibold text-ink-900">
+                      Fast response
+                    </p>
+                    <p className="mt-1 text-sm text-ink-500 leading-relaxed">
+                      We respond to all inquiries within 2 hours during business
+                      hours.
                     </p>
                   </div>
                 </div>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Space_Grotesk, DM_Sans } from "next/font/google";
 import { Header, Footer } from "@/components/layout";
 import {
   LocalBusinessStructuredData,
@@ -7,23 +7,26 @@ import {
 } from "@/components/seo";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const spaceGrotesk = Space_Grotesk({
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
+  variable: "--font-display",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const dmSans = DM_Sans({
+  weight: ["300", "400", "500", "600"],
   subsets: ["latin"],
+  variable: "--font-body",
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "AI Phone Answering & Automation for San Antonio Businesses | True Signal Digital",
-    template: "%s | True Signal Digital",
+    default:
+      "AI Phone Answering & Automation for San Antonio Businesses | SignalCrew",
+    template: "%s | SignalCrew",
   },
   description:
-    "Never miss another lead. AI-powered phone answering, chatbots, and automation for HVAC, plumbers, contractors, and local service businesses in San Antonio.",
+    "Never lose another customer to voicemail. AI-powered phone answering, chatbots, and automation for HVAC, plumbers, contractors, and local service businesses in San Antonio.",
   keywords: [
     "AI phone answering",
     "San Antonio",
@@ -33,26 +36,46 @@ export const metadata: Metadata = {
     "business automation",
     "missed calls",
     "24/7 answering service",
+    "SignalCrew",
   ],
-  authors: [{ name: "True Signal Digital" }],
-  creator: "True Signal Digital",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://truesignaldigital.com"),
+  authors: [{ name: "SignalCrew" }],
+  creator: "SignalCrew",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://signalcrew.ai"
+  ),
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "True Signal Digital",
+    siteName: "SignalCrew",
     title: "AI Phone Answering & Automation for San Antonio Businesses",
     description:
-      "Never miss another lead. AI-powered phone answering, chatbots, and automation for local service businesses.",
+      "Never lose another customer to voicemail. AI-powered phone answering, chatbots, and automation for local service businesses.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "SignalCrew - AI Automation for Local Businesses",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "True Signal Digital - AI Automation for Local Businesses",
-    description: "Never miss another lead with AI-powered phone answering and automation.",
+    title: "SignalCrew - AI Automation for Local Businesses",
+    description:
+      "Never lose another customer to voicemail with AI-powered phone answering and automation.",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
     follow: true,
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/apple-touch-icon.png",
   },
 };
 
@@ -67,7 +90,9 @@ export default function RootLayout({
         <LocalBusinessStructuredData />
         <OrganizationStructuredData />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans`}>
+      <body
+        className={`${spaceGrotesk.variable} ${dmSans.variable} antialiased font-body`}
+      >
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />

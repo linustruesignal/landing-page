@@ -1,95 +1,126 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { Phone, Bot, Star, Cog, ArrowRight } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 
 const services = [
   {
     name: "AI Phone Answering",
-    description: "24/7 call answering that books jobs while you sleep. Never miss another lead.",
+    description:
+      "Customers call. AI answers. Jobs get booked. You never know a call came in until the appointment hits your calendar.",
     href: "/services/ai-phone-answering",
-    icon: Phone,
-    color: "from-violet-500 to-violet-600",
-    bgLight: "bg-violet-50",
+    stat: "23+",
+    unit: "jobs/mo",
   },
   {
     name: "AI Chatbots",
     description:
-      "Website visitors become booked appointments automatically. Instant engagement, zero wait.",
+      "A visitor lands on your site at 11pm. Instead of bouncing, they chat with your AI and book a Tuesday appointment before bed.",
     href: "/services/ai-chatbots",
-    icon: Bot,
-    color: "from-blue-500 to-blue-600",
-    bgLight: "bg-blue-50",
+    stat: "40%",
+    unit: "more leads",
   },
   {
     name: "Review Management",
     description:
-      "Get 5-star reviews on autopilot. Automated requests and AI-powered responses.",
+      "Happy customers get a gentle nudge to leave a review. Unhappy ones get routed to you privately before they post. Your rating climbs on its own.",
     href: "/services/review-management",
-    icon: Star,
-    color: "from-cta-500 to-cta-600",
-    bgLight: "bg-cta-50",
+    stat: "4.8\u2605",
+    unit: "avg rating",
   },
   {
     name: "Business Automation",
     description:
-      "Eliminate 10+ hours of admin work every week. Automate scheduling, follow-ups, and more.",
+      "Stop copying info between apps. Invoices, follow-ups, and reminders run themselves while you run your crew.",
     href: "/services/business-automation",
-    icon: Cog,
-    color: "from-success-500 to-success-600",
-    bgLight: "bg-success-50",
+    stat: "10+",
+    unit: "hrs saved/wk",
   },
 ];
 
 export function ServicesOverview() {
+  const shouldReduceMotion = useReducedMotion();
+  const fade = shouldReduceMotion
+    ? {}
+    : {
+        initial: { opacity: 0, y: 20 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true },
+      };
+
   return (
-    <section className="bg-background py-20 sm:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mx-auto max-w-2xl text-center"
-        >
-          <h2 className="text-3xl font-bold tracking-tight text-navy-900 sm:text-4xl">
-            AI Solutions That Drive Results
-          </h2>
-          <p className="mt-4 text-lg text-navy-600">
-            From phone calls to reviews, we automate the parts of your business that steal
-            your time and lose you money.
+    <section className="relative overflow-hidden bg-warm-50 py-24 sm:py-32">
+      {/* Oversized watermark */}
+      <div className="swiss-watermark" aria-hidden="true">
+        <span className="swiss-watermark-text text-[10rem] sm:text-[16rem] lg:text-[20rem]">
+          TOOLS
+        </span>
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Section header */}
+        <motion.div {...fade} transition={{ duration: 0.5 }}>
+          <p className="text-xs font-medium uppercase tracking-[0.25em] text-ink-400">
+            Services
           </p>
+          <h2 className="mt-4 max-w-2xl font-display text-4xl font-bold tracking-tight text-ink-900 sm:text-5xl lg:text-6xl">
+            Tools that put money back in your pocket.
+          </h2>
+          {/* Accent divider */}
+          <div
+            className="mt-6 h-[3px] w-16 gradient-brand"
+            aria-hidden="true"
+          />
         </motion.div>
 
-        <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2">
+        {/* 2x2 grid with gap-px dividers */}
+        <div className="mt-16 grid grid-cols-1 gap-px bg-ink-300/30 sm:mt-20 sm:grid-cols-2">
           {services.map((service, index) => (
             <motion.div
               key={service.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              {...fade}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <Link
                 href={service.href}
-                className="group relative flex flex-col rounded-2xl border border-navy-200 bg-white p-8 shadow-sm transition-all hover:border-violet-300 hover:shadow-lg"
+                className="service-card group relative flex h-full flex-col bg-warm-50 p-8 transition-colors duration-300 hover:bg-white sm:p-10"
               >
-                <div
-                  className={`inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${service.color}`}
+                {/* Oversized stat watermark */}
+                <span
+                  className="pointer-events-none absolute bottom-4 right-6 select-none font-display text-[7rem] font-bold leading-none text-ink-900/[0.03] sm:text-[9rem]"
+                  aria-hidden="true"
                 >
-                  <service.icon className="h-7 w-7 text-white" />
-                </div>
+                  {service.stat}
+                </span>
 
-                <h3 className="mt-6 text-xl font-bold text-navy-900 group-hover:text-violet-600 transition-colors">
-                  {service.name}
-                </h3>
+                {/* Card content */}
+                <div className="relative flex flex-1 flex-col">
+                  {/* Title row with arrow */}
+                  <div className="flex items-start justify-between gap-4">
+                    <h3 className="font-display text-xl font-semibold text-ink-900 sm:text-2xl">
+                      {service.name}
+                    </h3>
+                    <ArrowUpRight
+                      className="h-5 w-5 shrink-0 text-ink-300 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary-600"
+                      aria-hidden="true"
+                    />
+                  </div>
 
-                <p className="mt-3 flex-1 text-navy-600">{service.description}</p>
+                  {/* Description */}
+                  <p className="mt-4 leading-relaxed text-ink-500">
+                    {service.description}
+                  </p>
 
-                <div className="mt-6 flex items-center text-sm font-semibold text-violet-600">
-                  Learn more
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  {/* Stat + unit */}
+                  <div className="mt-auto flex items-baseline gap-2 pt-8">
+                    <span className="font-display text-2xl font-bold tabular-nums text-primary-600">
+                      {service.stat}
+                    </span>
+                    <span className="text-sm font-medium text-ink-400">
+                      {service.unit}
+                    </span>
+                  </div>
                 </div>
               </Link>
             </motion.div>
